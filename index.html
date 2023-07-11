@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav  class="sticky">
+           <p id="port"> Portfolio</p>
+            
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            
+            <h1>Greetings! I am <span>Sanchi Midha</span></h1>
+             
+             <span id="element"></span>
+        </div>
+    </div>
+</div>
+
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/My-photo.jpg" alt="">
+            </div>
+            <div class="about-col-2"> 
+                <h1 class="sub-title">About Me</h1>
+                <br>
+                <p id="p1">Passionate Computer science student, 
+                    skilled in programming and problem
+                    solving. Effective Communicator and 
+                    collaborative team player with a drive for 
+                    innovation. Seeking an opportunity to 
+                    contribute and learn from dynamic 
+                    projects in a computer science role.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links"onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Programming Languages</span> <br> C , C++ , Python , Java </li>
+                            <li><span>Web Development </span> <br> HTML, CSS , Javascript</li>
+                            <li><span>Core Subjects</span> <br> Operating Systems , Database Management Systems , Computer Networks</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span> 2020-2024</span> <br> B.E-CSE | Chandigarh University, 
+                                Gharuan</li>
+                            <li><span>2019-2020 </span> <br> 12th| C.L. D.A.V Public School, Panchkula</li>
+                            <li><span>2017-2018 </span> <br> 10th | C.L. D.A.V Public School, Panchkula</li>
+                            
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------portfolio---->
+<div id="projects">
+    <div class="container">
+        <h1 class="sub-title">My projects</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="images/work-1.png">
+                 <div class="layer">
+                    <h3>Food Ordering Website</h3>
+                    <p>A real-time e-commerce restaurant with admin control, using a 
+                        Node backend, Mongo, and Stripe.</p>
+
+                 </div>
+            </div>
+            <div class="work">
+                <img src="images/work-2.png" alt="">
+                <div class="layer">
+                <h3>Book Recommendation  System</h3>
+                <p>A Machine Learning powered Book Recommendation system 
+                    that matches reader with their perfect literary companions.</p>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/work-3.png" alt="">
+                <div class="layer">
+                <h3>SkyCast</h3>
+                <p>Innovative javascript weather Application delivering real-time 
+                    weather updates and forecasts with an interactive UI</p>
+                </div>
+                </div>
+        </div>
+    </div>
+    <a href="#" class="btn">See More</a>
+</div>
+
+ <!--------contact---->
+
+ <div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-envelope"></i>sanchimidha02@gmail.com</p>
+                <div class="social-icons">
+                    <a href="https://github.com/Sanchimidha02"><i class="fa-brands fa-square-github"></i></a>
+                    <a href="https://www.linkedin.com/in/sanchi-midha-a58398214/"><i class="fa-brands fa-linkedin"></i></a>
+                    
+
+                </div>
+                <a href="images/1747_SanchiResume.pdf" download class="btn btn2">Download CV</a>
+
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name = "Name" placeholder="Your Name" required>
+                    <input type="email" name ="email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2" > Submit</button>
+                </form>
+                <span id="msg"></span>
+
+            </div>
+        </div>
+    </div>
+ </div>
+ <footer>
+    <div></div>
+ </footer>
+
+
+
+<script>
+    var tablinks= document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzbK2xiiB1CZ0MOJo_5vKj-Pl0sE0KL46FtqXhyDeDmLLTIMrmtW3OlSgswvcFVOWgc/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML= "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML =""
+            },1000)
+            form.reset();
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed('#element', {
+      strings: ['Web Developer', 'Software Developer' , 'Explorer' , 'Learner'],
+      typeSpeed: 50,
+    });
+  </script>
+</body>
+</html>
